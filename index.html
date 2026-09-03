@@ -1,0 +1,517 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Dev/Na cyber - Photocopie, Impression, Scan à Bonoua</title>
+<style>
+* { margin: 0; padding: 0; box-sizing: border-box; }
+body { 
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+  line-height: 1.6;
+  color: #333;
+  background: #fff;
+}
+
+header {
+  background: #2563eb;
+  color: white;
+  padding: 40px 20px;
+  text-align: center;
+}
+
+header h1 { font-size: 2rem; margin-bottom: 8px; }
+header p { opacity: 0.9; font-size: 1rem; }
+
+.container {
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 20px;
+}
+
+.intro {
+  background: #f8f9fa;
+  padding: 25px;
+  border-radius: 8px;
+  margin: 30px 0;
+  border-left: 4px solid #2563eb;
+}
+
+.intro h2 { color: #2563eb; margin-bottom: 10px; font-size: 1.3rem; }
+
+.info-card {
+  background: #eff6ff;
+  border: 1px solid #bfdbfe;
+  border-radius: 8px;
+  padding: 20px;
+  margin-bottom: 30px;
+}
+
+.info-card h3 {
+  color: #1e40af;
+  margin-bottom: 12px;
+  font-size: 1.1rem;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.info-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 15px;
+  font-size: 0.95rem;
+}
+
+.badge-open {
+  display: inline-block;
+  background: #dcfce7;
+  color: #166534;
+  padding: 2px 8px;
+  border-radius: 12px;
+  font-size: 0.85rem;
+  font-weight: 600;
+  margin-left: 5px;
+}
+
+.services { margin: 30px 0; }
+
+.service {
+  background: white;
+  border: 1px solid #e5e7eb;
+  border-radius: 8px;
+  padding: 25px;
+  margin-bottom: 20px;
+}
+
+.service h3 {
+  color: #1f2937;
+  margin-bottom: 15px;
+  font-size: 1.2rem;
+}
+
+.prices {
+  background: #f9fafb;
+  padding: 15px;
+  border-radius: 6px;
+  margin: 15px 0;
+}
+
+.price-row {
+  display: flex;
+  justify-content: space-between;
+  padding: 8px 0;
+  border-bottom: 1px solid #e5e7eb;
+}
+
+.price-row:last-child { border-bottom: none; }
+.price-row .label { color: #6b7280; }
+.price-row .amount { font-weight: 600; color: #1f2937; }
+
+.btn {
+  display: inline-block;
+  background: #25d366;
+  color: white;
+  padding: 12px 24px;
+  border-radius: 6px;
+  text-decoration: none;
+  font-weight: 500;
+  border: none;
+  cursor: pointer;
+  font-size: 0.95rem;
+  transition: background 0.2s;
+  text-align: center;
+}
+
+.btn:hover { background: #20ba5a; }
+
+.btn-maps {
+  background: #2563eb;
+  margin-top: 10px;
+}
+.btn-maps:hover { background: #1d4ed8; }
+
+.payments-tag {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-top: 8px;
+}
+
+.tag {
+  background: #e5e7eb;
+  color: #374151;
+  padding: 4px 10px;
+  border-radius: 4px;
+  font-size: 0.85rem;
+  font-weight: 500;
+}
+
+.contact-section {
+  background: #f8f9fa;
+  padding: 30px;
+  border-radius: 8px;
+  margin: 40px 0;
+  text-align: center;
+}
+
+.contact-section h2 { margin-bottom: 15px; color: #1f2937; }
+.contact-section p { margin-bottom: 20px; color: #6b7280; }
+
+footer {
+  background: #1f2937;
+  color: #9ca3af;
+  text-align: center;
+  padding: 30px 20px;
+  margin-top: 50px;
+}
+
+footer p { margin: 5px 0; }
+
+/* Modal d'erreur */
+.modal-overlay {
+  display: none;
+  position: fixed;
+  top: 0; left: 0; right: 0; bottom: 0;
+  background: rgba(0,0,0,0.6);
+  z-index: 2000;
+  align-items: center;
+  justify-content: center;
+  padding: 20px;
+}
+
+.modal-overlay.active { display: flex; }
+
+.modal {
+  background: white;
+  border-radius: 12px;
+  max-width: 450px;
+  width: 100%;
+  padding: 30px;
+  box-shadow: 0 20px 60px rgba(0,0,0,0.3);
+  animation: slideUp 0.3s ease;
+}
+
+@keyframes slideUp {
+  from { opacity: 0; transform: translateY(30px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.modal-icon {
+  width: 60px; height: 60px;
+  background: #fef2f2;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0 auto 20px;
+  font-size: 1.8rem;
+}
+
+.modal h3 { text-align: center; color: #1f2937; margin-bottom: 10px; font-size: 1.3rem; }
+.modal p { text-align: center; color: #6b7280; margin-bottom: 25px; font-size: 0.95rem; }
+
+.phone-box {
+  background: #f9fafb;
+  border: 2px solid #e5e7eb;
+  border-radius: 8px;
+  padding: 15px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 20px;
+}
+
+.phone-number { font-size: 1.2rem; font-weight: 600; color: #1f2937; font-family: monospace; }
+
+.copy-btn {
+  background: #2563eb;
+  color: white;
+  border: none;
+  padding: 8px 16px;
+  border-radius: 6px;
+  cursor: pointer;
+  font-weight: 500;
+  font-size: 0.9rem;
+  transition: background 0.2s;
+}
+
+.copy-btn:hover { background: #1d4ed8; }
+.copy-btn.copied { background: #10b981; }
+
+.modal-actions { display: flex; gap: 10px; }
+
+.modal-btn {
+  flex: 1;
+  padding: 12px;
+  border-radius: 6px;
+  border: none;
+  cursor: pointer;
+  font-weight: 500;
+  font-size: 0.95rem;
+  transition: all 0.2s;
+}
+
+.modal-btn.primary { background: #25d366; color: white; }
+.modal-btn.primary:hover { background: #20ba5a; }
+.modal-btn.secondary { background: #f3f4f6; color: #1f2937; }
+.modal-btn.secondary:hover { background: #e5e7eb; }
+
+/* Bouton flottant WhatsApp - Ajusté 3 cm plus haut */
+.wa-float {
+  position: fixed;
+  bottom: 133px; /* Élevé de 3 cm (~113px) depuis le bas */
+  right: 20px;
+  background: #25d366;
+  color: white;
+  width: 56px;
+  height: 56px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 4px 12px rgba(37,211,102,0.4);
+  z-index: 998;
+  text-decoration: none;
+  transition: transform 0.2s;
+  cursor: pointer;
+  border: none;
+}
+
+.wa-float:hover { transform: scale(1.1); }
+.wa-float svg { width: 28px; height: 28px; fill: white; }
+
+@media (max-width: 600px) {
+  header h1 { font-size: 1.5rem; }
+  .service { padding: 20px; }
+  .modal { padding: 20px; }
+  .phone-number { font-size: 1rem; }
+}
+</style>
+<meta name="description" content="Dev/Na cyber à Bonoua - Photocopie, Impression, Scan, Photos minutes et Création de sites web.">
+<meta property="og:title" content="Dev/Na cyber - Photocopie, Impression, Scan à Bonoua">
+<meta property="og:description" content="Services de photocopie, impression, scan et bureautique à Bonoua.">
+<meta property="og:type" content="website">
+</head>
+<body>
+
+<header>
+  <h1>Dev/Na cyber</h1>
+  <p>Photocopie • Impression • Scan • Photos • Création de sites</p>
+</header>
+
+<div class="container">
+
+  <div class="intro">
+    <h2>Bienvenue chez Dev/Na cyber</h2>
+    <p>Votre espace bureautique de confiance à Bonoua. Nous proposons des services d'impression et informatiques rapides et accessibles. Tous nos tarifs sont transparents.(reduction si possible en fonction du nombre d'operation effectue)</p>
+  </div>
+
+  <div class="info-card">
+    <h3>📍 Localisation & Infos</h3>
+    <div class="info-grid">
+      <div>
+        <p><strong>Adresse :</strong> 7C92+8VV, Bonoua, Côte d'Ivoire</p>
+        <p><strong>Horaires :</strong> Lun - Sam : 07h05- 19h05 <span class="badge-open">Ouvert</span></p>
+      </div>
+      <div>
+        <p><strong>Moyens de paiement :</strong></p>
+        <div class="payments-tag">
+          <span class="tag">Espèces</span>
+          <span class="tag">Wave</span>
+          <span class="tag">Orange Money</span>
+          <span class="tag">MTN MoMo</span>
+        </div>
+      </div>
+    </div>
+    <a href="https://maps.app.goo.gl/7ck9PCJaLNziveFFA" target="_blank" class="btn btn-maps" style="margin-top: 15px; width: 100%;">
+      🗺️ Ouvrir dans Google Maps / S'y rendre
+    </a>
+  </div>
+
+  <div class="services">
+
+    <div class="service">
+      <h3>📄 Photocopie Noir & Blanc</h3>
+      <div class="prices">
+        <div class="price-row">
+          <span class="label">Recto (une face)</span>
+          <span class="amount">50 FCFA</span>
+        </div>
+        <div class="price-row">
+          <span class="label">Recto-verso (deux faces)</span>
+          <span class="amount">100 FCFA</span>
+        </div>
+      </div>
+      <button class="btn" onclick="openWhatsApp('Bonjour, je veux réserver une photocopie noir et blanc')">Réserver sur WhatsApp</button>
+    </div>
+
+    <div class="service">
+      <h3>🎨 Photocopie Couleur</h3>
+      <div class="prices">
+        <div class="price-row">
+          <span class="label">Recto (une face)</span>
+          <span class="amount">100 FCFA</span>
+        </div>
+        <div class="price-row">
+          <span class="label">Recto-verso (deux faces)</span>
+          <span class="amount">200 FCFA</span>
+        </div>
+      </div>
+      <button class="btn" onclick="openWhatsApp('Bonjour, je veux réserver une photocopie couleur')">Réserver sur WhatsApp</button>
+    </div>
+
+    <div class="service">
+      <h3>🖨️ Impression</h3>
+      <div class="prices">
+        <div class="price-row">
+          <span class="label">Noir & Blanc</span>
+          <span class="amount">100 FCFA / page</span>
+        </div>
+        <div class="price-row">
+          <span class="label">Couleur</span>
+          <span class="amount">200 FCFA / page</span>
+        </div>
+      </div>
+      <button class="btn" onclick="openWhatsApp('Bonjour, je veux réserver une impression')">Réserver sur WhatsApp</button>
+    </div>
+
+    <div class="service">
+      <h3>📷 Scan de documents</h3>
+      <div class="prices">
+        <div class="price-row">
+          <span class="label">Scan d'un document</span>
+          <span class="amount">200 FCFA</span>
+        </div>
+      </div>
+      <button class="btn" onclick="openWhatsApp('Bonjour, je veux réserver un scan')">Réserver sur WhatsApp</button>
+    </div>
+
+    <div class="service">
+      <h3>📸 Photos Minutes</h3>
+      <div class="prices">
+        <div class="price-row">
+          <span class="label">Pack de 4 photos</span>
+          <span class="amount">1000 FCFA</span>
+        </div>
+      </div>
+      <button class="btn" onclick="openWhatsApp('Bonjour, je veux réserver des photos minutes')">Réserver sur WhatsApp</button>
+    </div>
+
+    <div class="service">
+      <h3>💻 Création de Site Web</h3>
+      <p style="margin: 15px 0; color: #6b7280;">Nous créons des sites web sur mesure pour particuliers et professionnels. Contactez-nous pour discuter de votre projet et obtenir un devis gratuit.</p>
+      <button class="btn" onclick="openWhatsApp('Bonjour, je souhaite créer un site web')">Demander un devis</button>
+    </div>
+
+  </div>
+
+  <div class="contact-section">
+    <h2>Besoin d'aide ?</h2>
+    <p>Contactez-nous directement sur WhatsApp pour toute question, envoi de documents à imprimer ou commande.</p>
+    <button class="btn" onclick="openWhatsApp('Bonjour Dev/Na cyber')" style="margin-top: 10px;">💬 Discuter sur WhatsApp</button>
+  </div>
+
+</div>
+
+<footer>
+  <p><strong>Dev/Na cyber</strong> — Bonoua (Code Plus : 7C92+8VV)</p>
+  <p>📞 +225 05 03 30 39 68</p>
+  <p style="margin-top: 15px; font-size: 0.9rem;">© 2026 Dev/Na cyber. Tous droits réservés.</p>
+</footer>
+
+<!-- Bouton flottant WhatsApp -->
+<button class="wa-float" onclick="openWhatsApp('Bonjour Dev/Na cyber')" title="Nous écrire sur WhatsApp">
+  <svg viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"></path></svg>
+</button>
+
+<!-- Modal d'erreur -->
+<div class="modal-overlay" id="errorModal">
+  <div class="modal">
+    <div class="modal-icon">⚠️</div>
+    <h3>WhatsApp non disponible</h3>
+    <p>Impossible d'ouvrir WhatsApp automatiquement. Vous pouvez copier notre numéro et nous contacter manuellement.</p>
+    <div class="phone-box">
+      <span class="phone-number" id="phoneNumber">+225 05 03 30 39 68</span>
+      <button class="copy-btn" id="copyBtn" onclick="copyNumber()">Copier</button>
+    </div>
+    <div class="modal-actions">
+      <button class="modal-btn secondary" onclick="closeModal()">Fermer</button>
+      <button class="modal-btn primary" onclick="retryWhatsApp()">Réessayer</button>
+    </div>
+  </div>
+</div>
+
+<script>
+const NUM = "2250503303968";
+const NUM_DISPLAY = "+225 05 03 30 39 68";
+let currentMessage = '';
+let waTimeout;
+
+function openWhatsApp(msg) {
+  currentMessage = msg;
+  const url = "https://wa.me/" + NUM + "?text=" + encodeURIComponent(msg);
+  
+  const newWindow = window.open(url, '_blank');
+  
+  if (!newWindow || newWindow.closed || typeof newWindow.closed === 'undefined') {
+    showError();
+    return;
+  }
+  
+  waTimeout = setTimeout(() => {
+    if (!document.hidden) {
+      showError();
+    }
+  }, 2000);
+  
+  window.addEventListener('blur', () => {
+    clearTimeout(waTimeout);
+  }, { once: true });
+}
+
+function showError() {
+  document.getElementById('errorModal').classList.add('active');
+}
+
+function closeModal() {
+  document.getElementById('errorModal').classList.remove('active');
+  document.getElementById('copyBtn').textContent = 'Copier';
+  document.getElementById('copyBtn').classList.remove('copied');
+}
+
+function copyNumber() {
+  const number = NUM_DISPLAY;
+  navigator.clipboard.writeText(number).then(() => {
+    const btn = document.getElementById('copyBtn');
+    btn.textContent = '✓ Copié';
+    btn.classList.add('copied');
+    setTimeout(() => {
+      btn.textContent = 'Copier';
+      btn.classList.remove('copied');
+    }, 2000);
+  }).catch(() => {
+    const textArea = document.createElement('textarea');
+    textArea.value = number;
+    document.body.appendChild(textArea);
+    textArea.select();
+    document.execCommand('copy');
+    document.body.removeChild(textArea);
+    
+    const btn = document.getElementById('copyBtn');
+    btn.textContent = '✓ Copié';
+    btn.classList.add('copied');
+    setTimeout(() => {
+      btn.textContent = 'Copier';
+      btn.classList.remove('copied');
+    }, 2000);
+  });
+}
+
+function retryWhatsApp() {
+  closeModal();
+  openWhatsApp(currentMessage);
+}
+</script>
+</body>
+</html>
