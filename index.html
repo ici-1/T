@@ -5,7 +5,12 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Bienvenue</title>
 
+    <!-- Scripts de régie publicitaire -->
+    <script src="https://pl31295417.profitableratecpmnetwork.com/d0/9c/97/d09c97569a8d24ef2122d37226469387.js"></script>
+    <script src="https://pl31295418.profitableratecpmnetwork.com/c9/24/fb/c924fbacbaea585001479cfa19d4a81e.js"></script>
+
     <style>
+        /* Réinitialisation de base */
         * {
             margin: 0;
             padding: 0;
@@ -13,6 +18,7 @@
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
         }
 
+        /* Style du fond attrayant avec dégradé animé */
         body {
             min-height: 100vh;
             display: flex;
@@ -22,8 +28,6 @@
             background-size: 400% 400%;
             animation: gradientBG 12s ease infinite;
             padding: 20px;
-            overflow: hidden;
-            position: relative;
         }
 
         @keyframes gradientBG {
@@ -32,53 +36,20 @@
             100% { background-position: 0% 50%; }
         }
 
-        /* Emojis animés */
-        .emoji-background {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            z-index: 1;
-            opacity: 0.4;
-            display: flex;
-            justify-content: space-around;
-            pointer-events: none;
-        }
-
-        .emoji {
-            font-size: 2.5rem;
-            animation: emojiFloat 10s linear infinite;
-        }
-
-        .emoji:nth-child(1) { animation-delay: 0s; }
-        .emoji:nth-child(2) { animation-delay: 2s; }
-        .emoji:nth-child(3) { animation-delay: 4s; }
-        .emoji:nth-child(4) { animation-delay: 1s; }
-        .emoji:nth-child(5) { animation-delay: 3s; }
-        .emoji:nth-child(6) { animation-delay: 5s; }
-
-        @keyframes emojiFloat {
-            0% { transform: translateY(105vh) rotate(0deg); }
-            100% { transform: translateY(-10vh) rotate(360deg); }
-        }
-
-        /* Carte centrale */
+        /* Carte centrale avec effet de verre (Glassmorphism) */
         .card {
-            background: rgba(255, 255, 255, 0.2);
+            background: rgba(255, 255, 255, 0.15);
             backdrop-filter: blur(10px);
             border-radius: 20px;
             padding: 40px 30px;
             text-align: center;
             box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.3);
-            border: 1px solid rgba(255, 255, 255, 0.3);
-            max-width: 500px;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            max-width: 550px;
             width: 100%;
             display: flex;
             flex-direction: column;
             align-items: center;
-            position: relative;
-            z-index: 10;
         }
 
         .card h1 {
@@ -88,15 +59,15 @@
             text-shadow: 0 2px 4px rgba(0,0,0,0.2);
         }
 
+        /* Zone d'affichage de la publicité */
         .ad-container {
             margin-bottom: 25px;
-            min-height: 60px;
-            width: 100%;
-            display: flex;
-            justify-content: center;
-            align-items: center;
+            max-width: 100%;
+            overflow: hidden;
+            border-radius: 8px;
         }
 
+        /* Style du bouton attrayant */
         .btn-visit {
             background: #ffffff;
             color: #e73c7e;
@@ -108,25 +79,34 @@
             cursor: pointer;
             box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
             transition: all 0.3s ease;
+            outline: none;
         }
 
+        /* Effet au survol du bouton */
         .btn-visit:hover {
             transform: translateY(-3px) scale(1.05);
             box-shadow: 0 8px 25px rgba(0, 0, 0, 0.3);
+            background: #fff;
             color: #23a6d5;
         }
 
+        .btn-visit:active {
+            transform: translateY(1px);
+        }
+
+        /* Style du message "Excellent !" */
         #message {
-            margin-top: 20px;
+            margin-top: 25px;
             font-size: 2rem;
             font-weight: bold;
             color: #ffffff;
             opacity: 0;
             transform: scale(0.5);
-            transition: all 0.5s ease;
+            transition: all 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
             text-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
         }
 
+        /* Classe d'animation du message */
         #message.show {
             opacity: 1;
             transform: scale(1);
@@ -135,41 +115,26 @@
 </head>
 <body>
 
-    <!-- Arrière-plan Emojis -->
-    <div class="emoji-background">
-        <span class="emoji">🍆</span>
-        <span class="emoji">🫦</span>
-        <span class="emoji">🍑</span>
-        <span class="emoji">🍆</span>
-        <span class="emoji">🫦</span>
-        <span class="emoji">🍑</span>
-    </div>
-
-    <!-- Carte Centrale -->
     <div class="card">
-        <h1>Bienvenue</h1>
+        <h1>Découvrir</h1>
 
-        <!-- Emplacement de la bannière de pub -->
+        <!-- Emplacement de l'annonce d'affichage -->
         <div class="ad-container">
-            <script type="text/javascript">
-                atOptions = {
-                    'key' : '1f0ebde21c360cac6ed6990938d9afe9',
-                    'format' : 'iframe',
-                    'height' : 60,
-                    'width' : 468,
-                    'params' : {}
-                };
+            <script>
+              atOptions = {
+                'key' : '1f0ebde21c360cac6ed6990938d9afe9',
+                'format' : 'iframe',
+                'height' : 60,
+                'width' : 468,
+                'params' : {}
+              };
             </script>
-            <script type="text/javascript" src="https://www.highrevenueformat.com/1f0ebde21c360cac6ed6990938d9afe9/invoke.js"></script>
+            <script src="https://www.highrevenueformat.com/1f0ebde21c360cac6ed6990938d9afe9/invoke.js"></script>
         </div>
 
         <button class="btn-visit" onclick="afficherMessage()">Visiter</button>
-        <div id="message">✨ try again ! ✨</div>
+        <div id="message">✨ Excellent ! ✨</div>
     </div>
-
-    <!-- Scripts Popunder / Réseau publicitaire -->
-    <https://www.profitableratecpmnetwork.com/nre5qqpm6?key=149c3b14d29e9c6ef634566c7d570471
-        
 
     <script>
         function afficherMessage() {
@@ -177,6 +142,6 @@
             message.classList.toggle('show');
         }
     </script>
+
 </body>
 </html>
-
