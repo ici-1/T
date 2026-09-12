@@ -3,145 +3,268 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Bienvenue</title>
+    <title>Mon Plateforme - Accueil</title>
 
-    <!-- Scripts de régie publicitaire -->
-    <script src="https://pl31295417.profitableratecpmnetwork.com/d0/9c/97/d09c97569a8d24ef2122d37226469387.js"></script>
-    <script src="https://pl31295418.profitableratecpmnetwork.com/c9/24/fb/c924fbacbaea585001479cfa19d4a81e.js"></script>
+    <!-- SCRIPT ADSTERRA #2 (Format global / Pop / Social Bar) -->
+    <script src="https://pl31278913.profitableratecpmnetwork.com/dd/e9/70/dde970f531f7a64ee0875a5812250a73.js"></script>
 
     <style>
-        /* Réinitialisation de base */
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        /* --- CSS RESET & VARIABLES --- */
+        :root {
+            --primary-color: #2563eb;
+            --primary-hover: #1d4ed8;
+            --success-color: #16a34a;
+            --success-hover: #15803d;
+            --bg-color: #f8fafc;
+            --card-bg: #ffffff;
+            --text-main: #0f172a;
+            --text-muted: #64748b;
+            --border-radius: 12px;
         }
 
-        /* Style du fond attrayant avec dégradé animé */
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+        }
+
         body {
-            min-height: 100vh;
+            background-color: var(--bg-color);
+            color: var(--text-main);
             display: flex;
             justify-content: center;
             align-items: center;
-            background: linear-gradient(-45deg, #ee7752, #e73c7e, #23a6d5, #23d5ab);
-            background-size: 400% 400%;
-            animation: gradientBG 12s ease infinite;
+            min-height: 100vh;
             padding: 20px;
         }
 
-        @keyframes gradientBG {
-            0% { background-position: 0% 50%; }
-            50% { background-position: 100% 50%; }
-            100% { background-position: 0% 50%; }
-        }
-
-        /* Carte centrale avec effet de verre (Glassmorphism) */
-        .card {
-            background: rgba(255, 255, 255, 0.15);
-            backdrop-filter: blur(10px);
-            border-radius: 20px;
-            padding: 40px 30px;
-            text-align: center;
-            box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.3);
-            border: 1px solid rgba(255, 255, 255, 0.2);
-            max-width: 550px;
+        /* --- CONTENEUR PRINCIPAL --- */
+        .container {
+            background-color: var(--card-bg);
+            max-width: 480px;
             width: 100%;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
+            border-radius: var(--border-radius);
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.05);
+            padding: 32px 24px;
+            text-align: center;
         }
 
-        .card h1 {
+        .icon {
+            font-size: 48px;
+            margin-bottom: 16px;
+        }
+
+        h1 {
+            font-size: 1.5rem;
+            margin-bottom: 8px;
+        }
+
+        p {
+            color: var(--text-muted);
+            font-size: 0.95rem;
+            line-height: 1.5;
+            margin-bottom: 24px;
+        }
+
+        /* --- BOUTONS --- */
+        .btn {
+            background-color: var(--primary-color);
             color: white;
-            font-size: 2.5rem;
-            margin-bottom: 20px;
-            text-shadow: 0 2px 4px rgba(0,0,0,0.2);
-        }
-
-        /* Zone d'affichage de la publicité */
-        .ad-container {
-            margin-bottom: 25px;
-            max-width: 100%;
-            overflow: hidden;
-            border-radius: 8px;
-        }
-
-        /* Style du bouton attrayant */
-        .btn-visit {
-            background: #ffffff;
-            color: #e73c7e;
-            font-size: 1.2rem;
-            font-weight: bold;
-            padding: 15px 40px;
             border: none;
-            border-radius: 50px;
+            width: 100%;
+            padding: 14px 20px;
+            font-size: 1rem;
+            font-weight: 600;
+            border-radius: 8px;
             cursor: pointer;
-            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
-            transition: all 0.3s ease;
-            outline: none;
+            transition: all 0.2s ease;
         }
 
-        /* Effet au survol du bouton */
-        .btn-visit:hover {
-            transform: translateY(-3px) scale(1.05);
-            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.3);
-            background: #fff;
-            color: #23a6d5;
+        .btn:hover:not(:disabled) {
+            background-color: var(--primary-hover);
         }
 
-        .btn-visit:active {
-            transform: translateY(1px);
+        /* Style du bouton lorsqu'il devient disponible */
+        .btn-ready {
+            background-color: var(--success-color);
         }
 
-        /* Style du message "Excellent !" */
-        #message {
-            margin-top: 25px;
-            font-size: 2rem;
-            font-weight: bold;
-            color: #ffffff;
-            opacity: 0;
-            transform: scale(0.5);
-            transition: all 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-            text-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
+        .btn-ready:hover {
+            background-color: var(--success-hover);
         }
 
-        /* Classe d'animation du message */
-        #message.show {
-            opacity: 1;
-            transform: scale(1);
+        /* Style du bouton pendant l'attente */
+        .btn:disabled {
+            background-color: #94a3b8;
+            cursor: not-allowed;
+            opacity: 0.8;
+        }
+
+        /* --- VUES ET TRANSITIONS --- */
+        .view {
+            display: none;
+        }
+
+        .view.active {
+            display: block;
+        }
+
+        /* --- STYLES ÉCRAN PUBLICITÉ --- */
+        .ad-box {
+            background: #f1f5f9;
+            border: 2px dashed #cbd5e1;
+            padding: 15px;
+            border-radius: 8px;
+            margin-bottom: 20px;
+            min-height: 250px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            overflow: hidden;
+        }
+
+        .notice {
+            font-size: 0.8rem;
+            color: var(--text-muted);
+            margin-top: 12px;
+        }
+
+        /* --- STYLES CONTENU FINAL --- */
+        .content-box {
+            background: #eff6ff;
+            border: 1px solid #bfdbfe;
+            padding: 20px;
+            border-radius: 8px;
+            color: #1e40af;
+            text-align: left;
+        }
+
+        .content-box ul {
+            margin-top: 10px;
+            padding-left: 20px;
+        }
+
+        .btn-secondary {
+            background-color: transparent;
+            color: var(--text-muted);
+            border: 1px solid #cbd5e1;
+            margin-top: 16px;
+        }
+
+        .btn-secondary:hover {
+            background-color: #f1f5f9;
         }
     </style>
 </head>
 <body>
 
-    <div class="card">
-        <h1>Découvrir</h1>
-
-        <!-- Emplacement de l'annonce d'affichage -->
-        <div class="ad-container">
-            <script>
-              atOptions = {
-                'key' : '1f0ebde21c360cac6ed6990938d9afe9',
-                'format' : 'iframe',
-                'height' : 60,
-                'width' : 468,
-                'params' : {}
-              };
-            </script>
-            <script src="https://www.highrevenueformat.com/1f0ebde21c360cac6ed6990938d9afe9/invoke.js"></script>
+    <div class="container">
+        
+        <!-- ETAPE 1: ACCUEIL -->
+        <div id="step-home" class="view active">
+            <div class="icon">🚀</div>
+            <h1>Bienvenue</h1>
+            <p>Accédez instantanément à vos contenus. Cliquez sur le bouton ci-dessous pour lancer l'exploration.</p>
+            <button class="btn" id="btn-explore">Explorer</button>
         </div>
 
-        <button class="btn-visit" onclick="afficherMessage()">Visiter</button>
-        <div id="message">✨ Excellent ! ✨</div>
+        <!-- ETAPE 2: PUBLICITÉ -->
+        <div id="step-ad" class="view">
+            <div class="icon">📢</div>
+            <h1>Soutenez notre site</h1>
+            <p class="notice">Annonce sponsorisée</p>
+            
+            <!-- SCRIPT ADSTERRA #1 (Bannière) -->
+            <div class="ad-box">
+                <script src="https://pl31278912.profitableratecpmnetwork.com/f2/dd/df/f2dddfb0a6fd9454a0e2f2eec77bc7ff.js"></script>
+            </div>
+
+            <!-- Bouton d'action -->
+            <button class="btn" id="btn-action" disabled>👆🏼 Cliquer ici 👆🏼 (7s)</button>
+        </div>
+
+        <!-- ETAPE 3: CONTENU FINAL -->
+        <div id="step-content" class="view">
+            <div class="icon">🎉</div>
+            <h1>Votre contenu</h1>
+            <p>Merci d'avoir patienté ! Voici les ressources demandées :</p>
+            
+            <div class="content-box">
+                <strong>Ressources disponibles :</strong>
+                <ul>
+                    <li>Document gratuit #1</li>
+                    <li>Guide d'utilisation #2</li>
+                    <li>Lien de téléchargement direct</li>
+                </ul>
+            </div>
+
+            <button class="btn btn-secondary" onclick="resetFlow()">Retour à l'accueil</button>
+        </div>
+
     </div>
 
+    <!-- --- JAVASCRIPT --- -->
     <script>
-        function afficherMessage() {
-            const message = document.getElementById('message');
-            message.classList.toggle('show');
+        const stepHome = document.getElementById('step-home');
+        const stepAd = document.getElementById('step-ad');
+        const stepContent = document.getElementById('step-content');
+
+        const btnExplore = document.getElementById('btn-explore');
+        const btnAction = document.getElementById('btn-action');
+
+        // Lien Direct Adsterra
+        const adsterraDirectLink = "https://www.profitableratecpmnetwork.com/nre5qqpm6?key=149c3b14d29e9c6ef634566c7d570471";
+
+        // Fonction pour changer de vue
+        function switchView(fromView, toView) {
+            fromView.classList.remove('active');
+            toView.classList.add('active');
+        }
+
+        // Clic sur "Explorer"
+        btnExplore.addEventListener('click', () => {
+            switchView(stepHome, stepAd);
+            startAdTimer();
+        });
+
+        // Gestion du compte à rebours de 7 secondes
+        function startAdTimer() {
+            let timeLeft = 7;
+            
+            btnAction.disabled = true;
+            btnAction.classList.remove('btn-ready');
+            btnAction.textContent = `👆🏼 Cliquer ici 👆🏼 (${timeLeft}s)`;
+
+            const timer = setInterval(() => {
+                timeLeft--;
+                
+                if (timeLeft > 0) {
+                    btnAction.textContent = `👆🏼 Cliquer ici 👆🏼 (${timeLeft}s)`;
+                } else {
+                    clearInterval(timer);
+                    btnAction.disabled = false;
+                    btnAction.classList.add('btn-ready');
+                    btnAction.textContent = "👆🏼 Cliquer ici 👆🏼";
+                }
+            }, 1000);
+        }
+
+        // Clic sur "Cliquer ici"
+        btnAction.addEventListener('click', () => {
+            if (!btnAction.disabled) {
+                // 1. Ouvre le lien direct Adsterra dans un nouvel onglet
+                window.open(adsterraDirectLink, '_blank');
+                
+                // 2. Redirige la page actuelle vers le contenu final
+                switchView(stepAd, stepContent);
+            }
+        });
+
+        // Réinitialiser le parcours
+        function resetFlow() {
+            switchView(stepContent, stepHome);
         }
     </script>
-
 </body>
 </html>
